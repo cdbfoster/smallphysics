@@ -17,22 +17,19 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_FORCE
-#define SMALLPHYSICS_FORCE
+#ifndef SMALLPHYSICS_FORCEFIELD
+#define SMALLPHYSICS_FORCEFIELD
 
-#include "math/Vector.hpp"
+#include "physics/api/PhysicalObject.hpp"
 
 namespace Physics
 {
-	class Force
+	class ForceField
 	{
 	public:
-		virtual ~Force() { }
+		virtual ~ForceField() { }
 
-		virtual Math::Vector3 GetMagnitude() const = 0;
-
-		virtual float AdvanceTime(float DeltaTime) = 0;
-		virtual float GetTimeRemaining() const = 0;
+		virtual void AffectObject(PhysicalObject &Object) const = 0;
 	};
 }
 

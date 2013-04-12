@@ -16,11 +16,21 @@
 # Copyright 2013 Chris Foster
 
 set(smallphysics_include ${smallphysics_include}
+	api/CollisionProperties.hpp
 	api/Force.hpp
+	api/ForceField.hpp
+	api/PhysicalMotionState.hpp
+	api/PhysicalObject.hpp
+	api/PhysicalProperties.hpp
 PARENT_SCOPE)
 
 set(api_install_include
+	CollisionProperties.hpp
 	Force.hpp
+	ForceField.hpp
+	PhysicalMotionState.hpp
+	PhysicalObject.hpp
+	PhysicalProperties.hpp
 )
 set(API_INCLUDE_OUTPUT_PATH "${INCLUDE_OUTPUT_PATH}/api")
 

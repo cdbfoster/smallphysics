@@ -30,5 +30,5 @@ add_subdirectory(api)
 set(SOURCE "..")
 
 include_directories(${SMALLMATH_INCLUDE} ${SOURCE})
-add_library(smallphysics ${smallphysics_include} ${smallphysics_source})
+add_executable(smallphysics main.cpp ${smallphysics_include} ${smallphysics_source})
 target_link_libraries(smallphysics ${SMALLMATH_LIBRARY})

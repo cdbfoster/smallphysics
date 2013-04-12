@@ -17,22 +17,15 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_FORCE
-#define SMALLPHYSICS_FORCE
-
-#include "math/Vector.hpp"
+#ifndef SMALLPHYSICS_PHYSICALMOTIONSTATE
+#define SMALLPHYSICS_PHYSICALMOTIONSTATE
 
 namespace Physics
 {
-	class Force
+	class PhysicalMotionState
 	{
 	public:
-		virtual ~Force() { }
-
-		virtual Math::Vector3 GetMagnitude() const = 0;
-
-		virtual float AdvanceTime(float DeltaTime) = 0;
-		virtual float GetTimeRemaining() const = 0;
+		virtual ~PhysicalMotionState() { }
 	};
 }
 

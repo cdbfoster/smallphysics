@@ -17,22 +17,30 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_FORCE
-#define SMALLPHYSICS_FORCE
+#ifndef SMALLPHYSICS_PHYSICALOBJECT
+#define SMALLPHYSICS_PHYSICALOBJECT
 
-#include "math/Vector.hpp"
+#include "physics/api/CollisionProperties.hpp"
+#include "physics/api/Force.hpp"
+#include "physics/api/PhysicalMotionState.hpp"
+#include "physics/api/PhysicalProperties.hpp"
 
 namespace Physics
 {
-	class Force
+	class PhysicalObject
 	{
-	public:
-		virtual ~Force() { }
+		virtual ~PhysicalObject() { }
 
-		virtual Math::Vector3 GetMagnitude() const = 0;
+		CollisionProperties &GetCollisionProperties() = 0;
+		CollisionProperties const &GetCollisionProperties() const = 0;
 
-		virtual float AdvanceTime(float DeltaTime) = 0;
-		virtual float GetTimeRemaining() const = 0;
+		PhysicalProperties &GetPhysicalProperties() = 0;
+		PhysicalProperties const &GetPhysicalProperties() const = 0;
+
+		PhysicalMotionState &GetPhysicalMotionState() = 0;
+		PhysicalMotionState const &GetPhysicalMotionState() const = 0;
+
+		void ApplyForce(Force &Force) = 0;
 	};
 }
 
