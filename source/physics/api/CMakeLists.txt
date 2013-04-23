@@ -16,21 +16,39 @@
 # Copyright 2013 Chris Foster
 
 set(smallphysics_include ${smallphysics_include}
+	api/CollisionDetector.hpp
+	api/CollisionPoint.hpp
 	api/CollisionProperties.hpp
+	api/CollisionResult.hpp
+	api/CollisionShape.hpp
+	api/Constraint.hpp
+	api/ConstraintSolver.hpp
 	api/Force.hpp
 	api/ForceField.hpp
+	api/ForceFieldApplicator.hpp
+	api/MotionIntegrator.hpp
 	api/PhysicalMotionState.hpp
 	api/PhysicalObject.hpp
 	api/PhysicalProperties.hpp
+	api/SimulationWorld.hpp
 PARENT_SCOPE)
 
 set(api_install_include
+	CollisionDetector.hpp
+	CollisionPoint.hpp
 	CollisionProperties.hpp
+	CollisionResult.hpp
+	CollisionShape.hpp
+	Constraint.hpp
+	ConstraintSolver.hpp
 	Force.hpp
 	ForceField.hpp
+	ForceFieldApplicator.hpp
+	MotionIntegrator.hpp
 	PhysicalMotionState.hpp
 	PhysicalObject.hpp
 	PhysicalProperties.hpp
+	SimulationWorld.hpp
 )
 set(API_INCLUDE_OUTPUT_PATH "${INCLUDE_OUTPUT_PATH}/api")
 
