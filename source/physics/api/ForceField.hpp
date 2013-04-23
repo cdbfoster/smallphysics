@@ -17,8 +17,8 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_FORCEFIELD
-#define SMALLPHYSICS_FORCEFIELD
+#ifndef SMALLPHYSICS_API_FORCEFIELD
+#define SMALLPHYSICS_API_FORCEFIELD
 
 #include "physics/api/PhysicalObject.hpp"
 
@@ -29,7 +29,7 @@ namespace Physics
 	public:
 		virtual ~ForceField() { }
 
-		virtual void AffectObject(PhysicalObject &Object) const = 0;
+		virtual void AffectObject(PhysicalObject &Object) = 0;
 	};
 }
 

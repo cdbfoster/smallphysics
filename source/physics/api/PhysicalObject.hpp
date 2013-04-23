@@ -17,8 +17,10 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_PHYSICALOBJECT
-#define SMALLPHYSICS_PHYSICALOBJECT
+#ifndef SMALLPHYSICS_API_PHYSICALOBJECT
+#define SMALLPHYSICS_API_PHYSICALOBJECT
+
+#include <vector>
 
 #include "physics/api/CollisionProperties.hpp"
 #include "physics/api/Force.hpp"
@@ -40,7 +42,9 @@ namespace Physics
 		PhysicalMotionState &GetPhysicalMotionState() = 0;
 		PhysicalMotionState const &GetPhysicalMotionState() const = 0;
 
-		void ApplyForce(Force &Force) = 0;
+		void AddForce(Force &Force) = 0;
+		void RemoveForce(Force const &Force) = 0;
+		std::vector<Force const &> GetForces() const = 0;
 	};
 }
 

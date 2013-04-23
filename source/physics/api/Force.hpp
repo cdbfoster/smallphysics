@@ -17,8 +17,8 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_FORCE
-#define SMALLPHYSICS_FORCE
+#ifndef SMALLPHYSICS_API_FORCE
+#define SMALLPHYSICS_API_FORCE
 
 #include "math/Vector.hpp"
 
@@ -31,8 +31,8 @@ namespace Physics
 
 		virtual Math::Vector3 GetMagnitude() const = 0;
 
-		virtual float AdvanceTime(float DeltaTime) = 0;
-		virtual float GetTimeRemaining() const = 0;
+		virtual void AdvanceTime(float DeltaTime) = 0;
+		virtual bool IsActive() const = 0;
 	};
 }
 
