@@ -30,7 +30,8 @@ set(smallphysics_include ${smallphysics_include}
 	api/PhysicalMotionState.hpp
 	api/PhysicalObject.hpp
 	api/PhysicalProperties.hpp
-	api/SimulationWorld.hpp
+	api/TimeStepper.hpp
+	api/World.hpp
 PARENT_SCOPE)
 
 set(api_install_include
@@ -48,7 +49,8 @@ set(api_install_include
 	PhysicalMotionState.hpp
 	PhysicalObject.hpp
 	PhysicalProperties.hpp
-	SimulationWorld.hpp
+	TimeStepper.hpp
+	World.hpp
 )
 set(API_INCLUDE_OUTPUT_PATH "${INCLUDE_OUTPUT_PATH}/api")
 
