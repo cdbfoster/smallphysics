@@ -15,21 +15,19 @@
 #
 # Copyright 2013 Chris Foster
 
-set(smallphysics_include
+set(smallphysics_include ${smallphysics_include}
+	world/DiscreteDynamicsWorld.hpp
+PARENT_SCOPE)
+
+set(smallphysics_source ${smallphysics_source}
+	world/DiscreteDynamicsWorld.cpp
+PARENT_SCOPE)
+
+set(world_install_include
+	DiscreteDynamicsWorld.hpp
 )
+set(WORLD_INCLUDE_OUTPUT_PATH "${INCLUDE_OUTPUT_PATH}/world")
 
-set(smallphysics_source
-)
-
-add_subdirectory(api)
-add_subdirectory(world)
-
-# To allow us to include files with #include "physics/category/File".
-# This is important because other libraries will (should) refer to these files in
-# the same way and this ensures that all paths are completed, regardless of where
-# they're accessed from.
-set(SOURCE "..")
-
-include_directories(${SMALLMATH_INCLUDE} ${SOURCE})
-add_executable(smallphysics main.cpp ${smallphysics_include} ${smallphysics_source})
-target_link_libraries(smallphysics ${SMALLMATH_LIBRARY})
+install(FILES
+	${world_install_include}
+DESTINATION ${WORLD_INCLUDE_OUTPUT_PATH})
