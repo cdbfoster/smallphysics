@@ -17,8 +17,8 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_API_SIMULATIONWORLD
-#define SMALLPHYSICS_API_SIMULATIONWORLD
+#ifndef SMALLPHYSICS_API_WORLD
+#define SMALLPHYSICS_API_WORLD
 
 #include <list>
 
@@ -28,10 +28,10 @@
 
 namespace Physics
 {
-	class SimulationWorld
+	class World
 	{
 	public:
-		virtual ~SimulationWorld() { }
+		virtual ~World() { }
 
 		virtual void StepSimulation(float Time) = 0;
 
