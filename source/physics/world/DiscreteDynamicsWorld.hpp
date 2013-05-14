@@ -17,10 +17,10 @@
 * Copyright 2013 Chris Foster
 */
 
-#ifndef SMALLPHYSICS_WORLD_DISCRETEDYNAMICSWORLD
-#define SMALLPHYSICS_WORLD_DISCRETEDYNAMICSWORLD
+#ifndef PHYSICS_WORLD_DISCRETEDYNAMICSWORLD
+#define PHYSICS_WORLD_DISCRETEDYNAMICSWORLD
 
-#include <list>
+#include <vector>
 
 #include "physics/api/CollisionDetector.hpp"
 #include "physics/api/Constraint.hpp"
@@ -55,9 +55,9 @@ namespace Physics
 		virtual void ClearForceFields();
 		virtual void ClearWorld();
 
-		virtual std::list<PhysicalObject const &> GetObjects() const;
-		virtual std::list<Constraint const &> GetConstraints() const;
-		virtual std::list<ForceField const &> GetForceFields() const;
+		virtual void GetObjects(std::vector<PhysicalObject *> &Objects) const;
+		virtual void GetConstraints(std::vector<Constraint *> &Constraints) const;
+		virtual void GetForceFields(std::vector<ForceField *> &ForceFields) const;
 
 	private:
 		Physics::TimeStepper &TimeStepper;
@@ -65,9 +65,9 @@ namespace Physics
 		Physics::CollisionDetector &CollisionDetector;
 		Physics::ConstraintSolver &ConstraintSolver;
 
-		std::list<PhysicalObject &> Objects;
-		std::list<Constraint &> Constraints;
-		std::list<ForceField &> Fields;
+		std::vector<PhysicalObject *> Objects;
+		std::vector<Constraint *> Constraints;
+		std::vector<ForceField *> Fields;
 	};
 }
 

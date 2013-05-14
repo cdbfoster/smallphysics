@@ -20,7 +20,7 @@
 #ifndef SMALLPHYSICS_API_CONSTRAINT
 #define SMALLPHYSICS_API_CONSTRAINT
 
-#include <list>
+#include <vector>
 
 #include "physics/api/PhysicalObject.hpp"
 
@@ -31,7 +31,7 @@ namespace Physics
 	public:
 		virtual ~Constraint() { }
 
-		virtual std::list<PhysicalObject const &> GetObjects() const = 0;
+		virtual void GetObjects(std::vector<PhysicalObject *> &Objects) const = 0;
 
 		virtual void Solve() = 0;
 	};

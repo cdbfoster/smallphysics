@@ -39,6 +39,8 @@ namespace Physics
 		virtual Math::Vector3 GetWorldNormalOnB() const = 0;
 
 		virtual float GetDistance() const = 0;
+
+		virtual CollisionPoint *Clone() = 0;
 	};
 }
 

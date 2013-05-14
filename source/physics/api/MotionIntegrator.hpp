@@ -20,7 +20,7 @@
 #ifndef SMALLPHYSICS_API_MOTIONINTEGRATOR
 #define SMALLPHYSICS_API_MOTIONINTEGRATOR
 
-#include <list>
+#include <vector>
 
 #include "physics/api/PhysicalObject.hpp"
 
@@ -31,7 +31,7 @@ namespace Physics
 	public:
 		virtual ~MotionIntegrator() { }
 
-		virtual void IntegrateMotions(std::list<PhysicalObject &> const &Objects) = 0;
+		virtual void IntegrateMotions(std::vector<PhysicalObject *> const &Objects) = 0;
 	};
 }
 

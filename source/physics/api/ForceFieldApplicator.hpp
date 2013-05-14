@@ -32,7 +32,7 @@ namespace Physics
 	public:
 		virtual ~ForceFieldApplicator() { }
 
-		virtual void AffectObjects(std::vector<ForceField &> const &Fields, std::vector<PhysicalObject &> const &Objects) = 0;
+		virtual void AffectObjects(std::vector<ForceField *> const &Fields, std::vector<PhysicalObject *> const &Objects) = 0;
 	};
 }
 

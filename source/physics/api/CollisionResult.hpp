@@ -20,7 +20,7 @@
 #ifndef SMALLPHYSICS_API_COLLISIONRESULT
 #define SMALLPHYSICS_API_COLLISIONRESULT
 
-#include <list>
+#include <vector>
 
 #include "physics/api/CollisionPoint.hpp"
 #include "physics/api/PhysicalObject.hpp"
@@ -35,8 +35,10 @@ namespace Physics
 		virtual PhysicalObject &GetObjectA() const = 0;
 		virtual PhysicalObject &GetObjectB() const = 0;
 
-		virtual void AddCollisionPoint(CollisionPoint const &) = 0;
-		virtual std::list<CollisionPoint> GetCollisionPoints() const = 0;
+		virtual void AddCollisionPoint(CollisionPoint const &Point) = 0;
+		virtual void GetCollisionPoints(std::vector<CollisionPoint const *> &Points) const = 0;
+
+		virtual CollisionResult *Clone() = 0;
 	};
 }
 

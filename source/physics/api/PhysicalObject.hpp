@@ -33,18 +33,18 @@ namespace Physics
 	{
 		virtual ~PhysicalObject() { }
 
-		CollisionProperties &GetCollisionProperties() = 0;
-		CollisionProperties const &GetCollisionProperties() const = 0;
+		virtual CollisionProperties &GetCollisionProperties() = 0;
+		virtual CollisionProperties const &GetCollisionProperties() const = 0;
 
-		PhysicalProperties &GetPhysicalProperties() = 0;
-		PhysicalProperties const &GetPhysicalProperties() const = 0;
+		virtual PhysicalProperties &GetPhysicalProperties() = 0;
+		virtual PhysicalProperties const &GetPhysicalProperties() const = 0;
 
-		PhysicalMotionState &GetPhysicalMotionState() = 0;
-		PhysicalMotionState const &GetPhysicalMotionState() const = 0;
+		virtual PhysicalMotionState &GetPhysicalMotionState() = 0;
+		virtual PhysicalMotionState const &GetPhysicalMotionState() const = 0;
 
-		void AddForce(Force &Force) = 0;
-		void RemoveForce(Force const &Force) = 0;
-		std::vector<Force const &> GetForces() const = 0;
+		virtual void AddForce(Force &Force) = 0;
+		virtual void RemoveForce(Force &Force) = 0;
+		virtual void GetForces(std::vector<Force *> &Forces) const = 0;
 	};
 }
 

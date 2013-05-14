@@ -20,7 +20,7 @@
 #ifndef SMALLPHYSICS_API_CONSTRAINTSOLVER
 #define SMALLPHYSICS_API_CONSTRAINTSOLVER
 
-#include <list>
+#include <vector>
 
 #include "physics/api/Constraint.hpp"
 
@@ -31,7 +31,7 @@ namespace Physics
 	public:
 		virtual ~ConstraintSolver() { }
 
-		virtual void SolveConstraints(std::list<Constraint &> const &Constraints) = 0;
+		virtual void SolveConstraints(std::vector<Constraint *> const &Constraints) = 0;
 	};
 }
 

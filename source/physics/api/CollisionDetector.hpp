@@ -21,6 +21,7 @@
 #define SMALLPHYSICS_API_COLLISIONDETECTOR
 
 #include <list>
+#include <vector>
 
 #include "physics/api/CollisionResult.hpp"
 #include "physics/api/PhysicalObject.hpp"
@@ -32,7 +33,29 @@ namespace Physics
 	public:
 		virtual ~CollisionDetector() { }
 
-		virtual std::list<CollisionResult> DetectCollisions(std::list<PhysicalObject &> const &Objects) = 0;
+		class ResultCache;
+
+virtual void DetectCollisions(std::vector<PhysicalObject *> const &Objects, ResultCache &Results) = 0;
+
+class ResultCache
+{
+public:
+	typedef std::list<CollisionResult const *>::const_iterator const_iterator;
+
+	~ResultCache()
+	{
+		for (const_iterator a = this->begin(); a != this->end(); ++a)
+			delete *a;
+	}
+
+	const_iterator begin() const { return Results.begin(); }
+	const_iterator end() const { return Results.end(); }
+
+	void push_back(CollisionResult const *Result) { this->Results.push_back(Result); }
+
+private:
+	std::list<CollisionResult const *> Results;
+};
 	};
 }
 

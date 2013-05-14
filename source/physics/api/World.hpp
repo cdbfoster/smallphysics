@@ -20,7 +20,7 @@
 #ifndef SMALLPHYSICS_API_WORLD
 #define SMALLPHYSICS_API_WORLD
 
-#include <list>
+#include <vector>
 
 #include "physics/api/Constraint.hpp"
 #include "physics/api/ForceField.hpp"
@@ -48,9 +48,9 @@ namespace Physics
 		virtual void ClearForceFields() = 0;
 		virtual void ClearWorld() = 0;
 
-		virtual std::list<PhysicalObject const &> GetObjects() const = 0;
-		virtual std::list<Constraint const &> GetConstraints() const = 0;
-		virtual std::list<ForceField const &> GetForceFields() const = 0;
+		virtual void GetObjects(std::vector<PhysicalObject *> &Objects) const = 0;
+		virtual void GetConstraints(std::vector<Constraint *> &Constraints) const = 0;
+		virtual void GetForceFields(std::vector<ForceField *> &ForceFields) const = 0;
 	};
 }
 
