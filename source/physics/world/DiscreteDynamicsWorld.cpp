@@ -21,50 +21,62 @@
 
 using namespace Physics;
 
-DiscreteDynamicsWorld::DiscreteDynamicsWorld(Physics::TimeStepper &TimeStepper, Physics::MotionIntegrator &MotionIntegrator,
-											 Physics::CollisionDetector &CollisionDetector, Physics::ConstraintSolver &ConstraintSolver) :
-	TimeStepper(TimeStepper), MotionIntegrator(MotionIntegrator), CollisionDetector(CollisionDetector), ConstraintSolver(ConstraintSolver)
-{
-	this->Objects.clear();
-	this->Constraints.clear();
-	this->Fields.clear();
-}
-
-DiscreteDynamicsWorld::~DiscreteDynamicsWorld() { }
-
-void DiscreteDynamicsWorld::StepSimulation(float Time)
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::DiscreteDynamicsWorld()
 {
 
 }
 
-void DiscreteDynamicsWorld::AddObject(PhysicalObject &Object)
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::~DiscreteDynamicsWorld() { }
+
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::StepSimulation(float Time)
+{
+
+}
+
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::AddObject(PhysicalObject &Object)
 {
 	this->Objects.push_back(&Object);
 }
 
-void DiscreteDynamicsWorld::AddConstraint(Constraint &Constraint)
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::AddConstraint(Constraint &Constraint)
 {
 	this->Constraints.push_back(&Constraint);
 }
 
-void DiscreteDynamicsWorld::AddForceField(ForceField &Field)
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::AddForceField(ForceField &Field)
 {
 	this->Fields.push_back(&Field);
 }
 
-void DiscreteDynamicsWorld::RemoveObject(PhysicalObject &Object)
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::RemoveObject(PhysicalObject &Object)
 {
 	//this->Objects.
 }
 
-void DiscreteDynamicsWorld::RemoveConstraint(Constraint &Constraint) { }
-void DiscreteDynamicsWorld::RemoveForceField(ForceField &Field) { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::RemoveConstraint(Constraint &Constraint) { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::RemoveForceField(ForceField &Field) { }
 
-void DiscreteDynamicsWorld::ClearObjects() { }
-void DiscreteDynamicsWorld::ClearConstraints() { }
-void DiscreteDynamicsWorld::ClearForceFields() { }
-void DiscreteDynamicsWorld::ClearWorld() { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::ClearObjects() { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::ClearConstraints() { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::ClearForceFields() { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::ClearWorld() { }
 
-void DiscreteDynamicsWorld::GetObjects(std::vector<PhysicalObject *> &Objects) const { }
-void DiscreteDynamicsWorld::GetConstraints(std::vector<Constraint *> &Constraints) const { }
-void DiscreteDynamicsWorld::GetForceFields(std::vector<ForceField *> &ForceFields) const { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::GetObjects(std::vector<PhysicalObject *> &Objects) const { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::GetConstraints(std::vector<Constraint *> &Constraints) const { }
+template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+void DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver>::GetForceFields(std::vector<ForceField *> &ForceFields) const { }

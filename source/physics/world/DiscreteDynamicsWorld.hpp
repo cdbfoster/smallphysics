@@ -33,37 +33,37 @@
 
 namespace Physics
 {
-	class DiscreteDynamicsWorld : public World
+	template <class _TimeStepper, class _MotionIntegrator, class _CollisionDetector, class _ConstraintSolver>
+	class DiscreteDynamicsWorld : public World<DiscreteDynamicsWorld<_TimeStepper, _MotionIntegrator, _CollisionDetector, _ConstraintSolver> >
 	{
 	public:
-		DiscreteDynamicsWorld(Physics::TimeStepper &TimeStepper, Physics::MotionIntegrator &MotionIntegrator,
-							  Physics::CollisionDetector &CollisionDetector, Physics::ConstraintSolver &ConstraintSolver);
-		virtual ~DiscreteDynamicsWorld();
+		DiscreteDynamicsWorld();
+		~DiscreteDynamicsWorld();
 
-		virtual void StepSimulation(float Time);
+		void StepSimulation(float Time);
 
-		virtual void AddObject(PhysicalObject &Object);
-		virtual void AddConstraint(Constraint &Constraint);
-		virtual void AddForceField(ForceField &Field);
+		void AddObject(PhysicalObject &Object);
+		void AddConstraint(Constraint &Constraint);
+		void AddForceField(ForceField &Field);
 
-		virtual void RemoveObject(PhysicalObject &Object);
-		virtual void RemoveConstraint(Constraint &Constraint);
-		virtual void RemoveForceField(ForceField &Field);
+		void RemoveObject(PhysicalObject &Object);
+		void RemoveConstraint(Constraint &Constraint);
+		void RemoveForceField(ForceField &Field);
 
-		virtual void ClearObjects();
-		virtual void ClearConstraints();
-		virtual void ClearForceFields();
-		virtual void ClearWorld();
+		void ClearObjects();
+		void ClearConstraints();
+		void ClearForceFields();
+		void ClearWorld();
 
-		virtual void GetObjects(std::vector<PhysicalObject *> &Objects) const;
-		virtual void GetConstraints(std::vector<Constraint *> &Constraints) const;
-		virtual void GetForceFields(std::vector<ForceField *> &ForceFields) const;
+		void GetObjects(std::vector<PhysicalObject *> &Objects) const;
+		void GetConstraints(std::vector<Constraint *> &Constraints) const;
+		void GetForceFields(std::vector<ForceField *> &ForceFields) const;
 
 	private:
-		Physics::TimeStepper &TimeStepper;
-		Physics::MotionIntegrator &MotionIntegrator;
-		Physics::CollisionDetector &CollisionDetector;
-		Physics::ConstraintSolver &ConstraintSolver;
+		_TimeStepper TimeStepper;
+		_MotionIntegrator MotionIntegrator;
+		_CollisionDetector CollisionDetector;
+		_ConstraintSolver ConstraintSolver;
 
 		std::vector<PhysicalObject *> Objects;
 		std::vector<Constraint *> Constraints;

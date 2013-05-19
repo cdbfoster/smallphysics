@@ -28,30 +28,64 @@
 
 namespace Physics
 {
+	template <class Derived>
 	class World
 	{
 	public:
-		virtual ~World() { }
+		void StepSimulation(float Time);
 
-		virtual void StepSimulation(float Time) = 0;
+		void AddObject(PhysicalObject &Object);
+		void AddConstraint(Constraint &Constraint);
+		void AddForceField(ForceField &Field);
 
-		virtual void AddObject(PhysicalObject &Object) = 0;
-		virtual void AddConstraint(Constraint &Constraint) = 0;
-		virtual void AddForceField(ForceField &Field) = 0;
+		void RemoveObject(PhysicalObject &Object) = 0;
+		void RemoveConstraint(Constraint &Constraint) = 0;
+		void RemoveForceField(ForceField &Field) = 0;
 
-		virtual void RemoveObject(PhysicalObject &Object) = 0;
-		virtual void RemoveConstraint(Constraint &Constraint) = 0;
-		virtual void RemoveForceField(ForceField &Field) = 0;
+		void ClearObjects();
+		void ClearConstraints();
+		void ClearForceFields();
+		void ClearWorld();
 
-		virtual void ClearObjects() = 0;
-		virtual void ClearConstraints() = 0;
-		virtual void ClearForceFields() = 0;
-		virtual void ClearWorld() = 0;
-
-		virtual void GetObjects(std::vector<PhysicalObject *> &Objects) const = 0;
-		virtual void GetConstraints(std::vector<Constraint *> &Constraints) const = 0;
-		virtual void GetForceFields(std::vector<ForceField *> &ForceFields) const = 0;
+		void GetObjects(std::vector<PhysicalObject *> &Objects) const;
+		void GetConstraints(std::vector<Constraint *> &Constraints) const;
+		void GetForceFields(std::vector<ForceField *> &ForceFields) const;
 	};
+
+
+
+	template <class Derived>
+	void World<Derived>::StepSimulation(float Time) { static_cast<Derived *>(this)->StepSimulation(Time); }
+
+	template <class Derived>
+	void World<Derived>::AddObject(PhysicalObject &Object) { static_cast<Derived *>(this)->AddObject(Object); }
+	template <class Derived>
+	void World<Derived>::AddConstraint(Constraint &Constraint) { static_cast<Derived *>(this)->AddConstraint(Constraint); }
+	template <class Derived>
+	void World<Derived>::AddForceField(ForceField &Field) { static_cast<Derived *>(this)->AddForceField(Field); }
+
+	template <class Derived>
+	void World<Derived>::RemoveObject(PhysicalObject &Object) { static_cast<Derived *>(this)->RemoveObject(Object); }
+	template <class Derived>
+	void World<Derived>::RemoveConstraint(Constraint &Constraint) { static_cast<Derived *>(this)->RemoveConstraint(Constraint); }
+	template <class Derived>
+	void World<Derived>::RemoveForceField(ForceField &Field) { static_cast<Derived *>(this)->RemoveForceField(Field); }
+
+	template <class Derived>
+	void World<Derived>::ClearObjects() { static_cast<Derived *>(this)->ClearObjects(); }
+	template <class Derived>
+	void World<Derived>::ClearConstraints() { static_cast<Derived *>(this)->ClearConstraints(); }
+	template <class Derived>
+	void World<Derived>::ClearForceFields() { static_cast<Derived *>(this)->ClearForceFields(); }
+	template <class Derived>
+	void World<Derived>::ClearWorld() { static_cast<Derived *>(this)->ClearWorld(); }
+
+	template <class Derived>
+	void World<Derived>::GetObjects(std::vector<PhysicalObject *> &Objects) const { static_cast<Derived *>(this)->GetObjects(Objects); }
+	template <class Derived>
+	void World<Derived>::GetConstraints(std::vector<Constraint *> &Constraints) const { static_cast<Derived *>(this)->GetConstraints(Constraints); }
+	template <class Derived>
+	void World<Derived>::GetForceFields(std::vector<ForceField *> &Fields) const { static_cast<Derived *>(this)->GetForceFields(Fields); }
 }
 
 #endif

@@ -17,7 +17,6 @@
 
 set(smallphysics_include ${smallphysics_include}
 	api/CollisionDetector.hpp
-	api/CollisionPoint.hpp
 	api/CollisionProperties.hpp
 	api/CollisionResult.hpp
 	api/CollisionShape.hpp
@@ -34,9 +33,12 @@ set(smallphysics_include ${smallphysics_include}
 	api/World.hpp
 PARENT_SCOPE)
 
+set(smallphysics_source ${smallphysics_source}
+	api/CollisionResult.cpp
+PARENT_SCOPE)
+
 set(api_install_include
 	CollisionDetector.hpp
-	CollisionPoint.hpp
 	CollisionProperties.hpp
 	CollisionResult.hpp
 	CollisionShape.hpp

@@ -22,7 +22,6 @@
 
 #include <vector>
 
-#include "physics/api/CollisionPoint.hpp"
 #include "physics/api/PhysicalObject.hpp"
 
 namespace Physics
@@ -30,15 +29,54 @@ namespace Physics
 	class CollisionResult
 	{
 	public:
-		virtual ~CollisionResult() { }
+		class Point;
 
-		virtual PhysicalObject &GetObjectA() const = 0;
-		virtual PhysicalObject &GetObjectB() const = 0;
+		CollisionResult(PhysicalObject &ObjectA, PhysicalObject &ObjectB) : ObjectA(ObjectA), ObjectB(ObjectB) { }
+		~CollisionResult() { }
 
-		virtual void AddCollisionPoint(CollisionPoint const &Point) = 0;
-		virtual void GetCollisionPoints(std::vector<CollisionPoint const *> &Points) const = 0;
+		inline PhysicalObject &GetObjectA() const { return ObjectA; }
+		inline PhysicalObject &GetObjectB() const { return ObjectB; }
 
-		virtual CollisionResult *Clone() = 0;
+		void AddCollisionPoint(const Point &Point);
+		void GetCollisionPoints(std::vector<Point> &Points) const;
+
+	private:
+		PhysicalObject &ObjectA;
+		PhysicalObject &ObjectB;
+
+		std::vector<Point> Points;
+
+	public:
+		class Point
+		{
+		public:
+			Point(Math::Vector3 const &LocalPointOnA, Math::Vector3 const &LocalPointOnB,
+				  Math::Vector3 const &WorldPointOnA, Math::Vector3 const &WorldNormalOnA, float const &Distance);
+			~Point() { }
+
+			inline Math::Vector3 const &GetLocalPointOnA() const { return LocalPointOnA; }
+			inline Math::Vector3 const &GetLocalPointOnB() const { return LocalPointOnB; }
+
+			inline Math::Vector3 const &GetWorldPointOnA() const { return WorldPointOnA; }
+			inline Math::Vector3 const &GetWorldPointOnB() const { return WorldPointOnB; }
+
+			inline Math::Vector3 const &GetWorldNormalOnA() const { return WorldNormalOnA; }
+			inline Math::Vector3 const &GetWorldNormalOnB() const { return WorldNormalOnB; }
+
+			inline float const &GetDistance() const { return Distance; }
+
+		private:
+			Math::Vector3 LocalPointOnA;
+			Math::Vector3 LocalPointOnB;
+
+			Math::Vector3 WorldPointOnA;
+			Math::Vector3 WorldPointOnB;
+
+			Math::Vector3 WorldNormalOnA;
+			Math::Vector3 WorldNormalOnB;
+
+			float Distance;
+		};
 	};
 }
 

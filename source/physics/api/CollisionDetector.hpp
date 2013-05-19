@@ -28,35 +28,20 @@
 
 namespace Physics
 {
+	template <class Derived>
 	class CollisionDetector
 	{
 	public:
-		virtual ~CollisionDetector() { }
-
-		class ResultCache;
-
-virtual void DetectCollisions(std::vector<PhysicalObject *> const &Objects, ResultCache &Results) = 0;
-
-class ResultCache
-{
-public:
-	typedef std::list<CollisionResult const *>::const_iterator const_iterator;
-
-	~ResultCache()
-	{
-		for (const_iterator a = this->begin(); a != this->end(); ++a)
-			delete *a;
-	}
-
-	const_iterator begin() const { return Results.begin(); }
-	const_iterator end() const { return Results.end(); }
-
-	void push_back(CollisionResult const *Result) { this->Results.push_back(Result); }
-
-private:
-	std::list<CollisionResult const *> Results;
-};
+		void DetectCollisions(std::vector<PhysicalObject *> const &Objects, std::vector<CollisionResult> &Results);
 	};
+
+
+
+	template <class Derived>
+	void CollisionDetector<Derived>::DetectCollisions(std::vector<PhysicalObject *> const &Objects, std::vector<CollisionResult> &Results)
+	{
+		static_cast<Derived *>(this)->DetectCollisions(Objects, Results);
+	}
 }
 
 #endif
